@@ -17,7 +17,7 @@ function Init() {
 	addRaycasters();
 	initKeyboard();
 	startGame();
-
+	window.addEventListener( 'mousemove', onMouseMove, false );
 	animate();
 }
 
@@ -39,14 +39,15 @@ function addLight () {
 
 function addCamera() {
 	camera = new THREE.PerspectiveCamera( 45, width / height, camNear, camFar ); 
-	camera.position.set(0, 200, 150);
-	camera.lookAt(new THREE.Vector3( 0, 0, 30 ));
+	camera.position.set(0, 250, 1);
+	camera.lookAt(new THREE.Vector3( 0, 0, 0 ));
 	scene.add( camera );
 }
 
 function animate() {
 	frameID = requestAnimationFrame(animate);
 	renderer.render(scene, camera);
+	manageMouseInput();
 } 
 
 /*game functions*/
